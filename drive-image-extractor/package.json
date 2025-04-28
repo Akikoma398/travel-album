@@ -1,0 +1,15 @@
+{
+  "name": "drive-image-extractor",
+  "version": "1.0.0",
+  "main": "extract_drive_image_ids.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "googleapis": "^148.0.0"
+  }
+}

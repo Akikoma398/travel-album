@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>淡路島旅行アルバム</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      text-align: center;
+      margin: 30px;
+    }
+    h1 {
+      margin-bottom: 20px;
+    }
+    #gallery {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px;
+      margin-top: 20px;
+    }
+    .photo {
+      width: 250px;
+      height: 250px;
+      object-fit: cover;
+      border-radius: 10px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+      transition: transform 0.3s;
+    }
+    .photo:hover {
+      transform: scale(1.05);
+    }
+    button {
+      margin-top: 30px;
+      padding: 10px 20px;
+      font-size: 18px;
+      cursor: pointer;
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      border-radius: 5px;
+    }
+    button:hover {
+      background-color: #45a049;
+    }
+  </style>
+</head>
+<body>
+
+<h1>淡路島旅行アルバム</h1>
+
+<!-- リロードボタンを設置 -->
+<button id="reloadButton">表示されない画像を再読み込み</button>
+
+<div id="gallery"></div>
+
+<script>
+// images.jsonを読み込んでサムネイル表示
+fetch('../drive-image-extractor/images.json')
+  .then(response => response.json())
+  .then(images => {
+    const gallery = document.getElementById('gallery');
+    images.forEach(image => {
+      if (image.url) {
+        const img = document.createElement('img');
+        const fileId = new URL(image.url).searchParams.get('id');
+        img.src = `https://drive.google.com/thumbnail?id=${fileId}`;
+        img.alt = image.name;
+        img.className = 'photo';
+        img.loading = 'lazy';
+        gallery.appendChild(img);
+      }
+    });
+  })
+  .catch(error => {
+    console.error('画像の読み込みに失敗しました:', error);
+  });
+
+// 🔥 ボタンの処理：表示されない画像だけ再読み込み
+document.getElementById('reloadButton').addEventListener('click', () => {
+  const images = document.querySelectorAll('img.photo');
+  images.forEach(img => {
+    if (!img.complete || img.naturalWidth === 0) { // 画像がロード失敗している場合
+      const src = img.src;
+      img.src = ""; // 一度srcをクリアして
+      img.src = src; // 再セットしてリロード
+    }
+  });
+});
+</script>
+
+</body>
+</html>
