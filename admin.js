@@ -1,4 +1,4 @@
-const scriptURL = "https://script.google.com/macros/s/【https://script.google.com/macros/s/AKfycbxN3nz8_tt9Ap0tguv01l3yf6mCXj2muLTlwwC1fbegt2VwWKDDwDW8YCBuxT1ryiS8/exec】/exec";
+const scriptURL = "https://script.google.com/macros/s/AKfycbxN3nz8_tt9Ap0tguv01l3yf6mCXj2muLTlwwC1fbegt2VwWKDDwDW8YCBuxT1ryiS8/exec";
 
 async function loadUsers() {
   const tbody = document.getElementById("userBody");
@@ -23,7 +23,11 @@ async function loadUsers() {
         <td>${user.requestTime}</td>
         <td>${user.status}</td>
         <td>${user.approvedTime}</td>
-        <td><button class="approve-btn" onclick="toggleApproval('${user.email}', this)">${user.status === "承認済み" ? "承認を取り消す" : "承認"}</button></td>
+        <td>
+          <button class="approve-btn" onclick="toggleApproval('${user.email}', this)">
+            ${user.status === "承認済み" ? "承認を取り消す" : "承認"}
+          </button>
+        </td>
       `;
 
       tbody.appendChild(tr);
