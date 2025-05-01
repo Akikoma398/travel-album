@@ -50,28 +50,16 @@ async function loadUsers() {
 
     users.forEach(user => {
       const tr = document.createElement("tr");
-
-      const tdName = document.createElement("td");
-      tdName.textContent = user.name;
-
-      const tdEmail = document.createElement("td");
-      tdEmail.textContent = user.email;
-
-      const tdAction = document.createElement("td");
-      const btn = document.createElement("button");
-      btn.className = "approve-btn";
-      btn.textContent = "承認";
-      btn.onclick = () => approveUser(user.email);
-      tdAction.appendChild(btn);
-
-      tr.appendChild(tdName);
-      tr.appendChild(tdEmail);
-      tr.appendChild(tdAction);
+      tr.innerHTML = `
+        <td>${user.name}</td>
+        <td>${user.email}</td>
+        <td><button class="approve-btn" onclick="approveUser('${user.email}')">承認</button></td>
+      `;
       tbody.appendChild(tr);
     });
   } catch (err) {
-    tbody.innerHTML = `<tr><td colspan="3">読み込みエラー</td></tr>`;
-    console.error("Fetch error:", err);
+    console.error("読み込みエラー:", err);
+    tbody.innerHTML = "<tr><td colspan='3'>読み込みエラー</td></tr>";
   }
 }
 
