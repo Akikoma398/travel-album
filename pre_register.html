@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <title>仮登録フォーム</title>
+  <style>
+    body {
+      font-family: 'Helvetica', sans-serif;
+      background-color: #f8f8f8;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      margin: 0;
+    }
+
+    h1 {
+      font-size: 28px;
+      margin-bottom: 20px;
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+      width: 300px;
+    }
+
+    input, textarea {
+      padding: 10px;
+      font-size: 16px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+    }
+
+    button {
+      padding: 12px;
+      font-size: 18px;
+      background-color: #2196F3;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #1976D2;
+    }
+
+    #message {
+      margin-top: 10px;
+      color: red;
+      font-size: 14px;
+    }
+  </style>
+</head>
+<body>
+  <h1>仮登録フォーム</h1>
+  <form id="registerForm">
+    <input type="text" id="name" placeholder="名前（フルネーム）" required />
+    <input type="email" id="email" placeholder="メールアドレス" required />
+    <textarea id="question" placeholder="軽音部の顧問の名前は？" rows="2" required></textarea>
+    <button type="submit">送信</button>
+    <p id="message"></p>
+  </form>
+
+  <script src="pre_register.js"></script>
+  <button onclick="history.back()" style="
+  margin-top: 30px;
+  padding: 10px 20px;
+  font-size: 16px;
+  background-color: #00a2ff;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+">
+  ← 戻る
+</button>
+</body>
+</html>

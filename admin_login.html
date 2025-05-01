@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <title>管理者ログイン</title>
+  <style>
+    body {
+      font-family: 'Helvetica', sans-serif;
+      background-color: #fff;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      margin: 0;
+    }
+
+    h1 {
+      font-size: 28px;
+      margin-bottom: 20px;
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+      width: 300px;
+    }
+
+    input {
+      padding: 10px;
+      font-size: 16px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+
+    button {
+      padding: 12px;
+      font-size: 18px;
+      background-color: #333;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #555;
+    }
+
+    #error {
+      color: red;
+      font-size: 14px;
+      margin-top: 10px;
+    }
+  </style>
+</head>
+<body>
+  <h1>管理者ログイン（2段階認証）</h1>
+  <form id="adminLoginForm">
+    <input type="password" id="pw1" placeholder="パスワード1" required />
+    <input type="password" id="pw2" placeholder="パスワード2" required />
+    <button type="submit">ログイン</button>
+    <p id="error"></p>
+  </form>
+
+  <script src="admin_login.js"></script>
+  <button onclick="history.back()" style="
+  margin-top: 30px;
+  padding: 10px 20px;
+  font-size: 16px;
+  background-color: #00a2ff;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+">
+  ← 戻る
+</button>
+</body>
+</html>

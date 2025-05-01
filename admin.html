@@ -2,26 +2,119 @@
 <html lang="ja">
 <head>
   <meta charset="UTF-8" />
-  <title>管理者ページ - 旅行アルバム</title>
-  <script defer src="admin.js"></script>
+  <title>管理者ページ</title>
+  <style>
+    body {
+      font-family: 'Helvetica', sans-serif;
+      padding: 30px;
+      background-color: #f8f8f8;
+    }
+
+    h1, h2 {
+      font-size: 24px;
+      margin-bottom: 15px;
+    }
+
+    section {
+      margin-bottom: 40px;
+    }
+
+    input {
+      padding: 8px;
+      margin: 5px 5px 0 0;
+      border-radius: 4px;
+      border: 1px solid #ccc;
+      font-size: 14px;
+    }
+
+    button {
+      padding: 8px 16px;
+      font-size: 14px;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+
+    button.approve-btn {
+      background-color: #4CAF50;
+      color: white;
+    }
+
+    button.approve-btn:hover {
+      background-color: #388E3C;
+    }
+
+    button.return-btn {
+      background-color: #aaa;
+      margin-top: 20px;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      background: white;
+    }
+
+    th, td {
+      border: 1px solid #ccc;
+      padding: 10px;
+      text-align: center;
+    }
+
+    #changeMessage, #adminChangeMessage {
+      color: green;
+      margin-top: 10px;
+      font-size: 14px;
+    }
+  </style>
 </head>
 <body>
-  <h1>管理者専用ページ</h1>
+  <h1>管理者ページ</h1>
 
+  <!-- 一般ログインパスワード管理 -->
   <section>
-    <h2>現在の一般パスワード</h2>
+    <h2>現在のログインパスワード</h2>
     <p id="currentPassword">読み込み中...</p>
-  </section>
-
-  <section>
-    <h2>パスワードの変更</h2>
     <form id="changePasswordForm">
       <input type="password" id="newPassword" placeholder="新しいパスワード" required />
       <button type="submit">変更</button>
-      <p id="changeMessage" style="color:green;"></p>
+      <p id="changeMessage"></p>
     </form>
   </section>
 
-  <a href="index.html">ログインページに戻る</a>
+  <!-- 管理者パスワード管理 -->
+  <section>
+    <h2>現在の管理者パスワード（2段階）</h2>
+    <p>パスワード1: <span id="adminPw1">読み込み中...</span></p>
+    <p>パスワード2: <span id="adminPw2">読み込み中...</span></p>
+    <form id="changeAdminPasswordForm">
+      <input type="password" id="newAdminPw1" placeholder="新しいパスワード1" required />
+      <input type="password" id="newAdminPw2" placeholder="新しいパスワード2" required />
+      <button type="submit">変更</button>
+      <p id="adminChangeMessage"></p>
+    </form>
+  </section>
+
+  <!-- 未承認ユーザー一覧 -->
+  <section>
+    <h2>仮登録ユーザー一覧（承認処理）</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>名前</th>
+          <th>メールアドレス</th>
+          <th>承認</th>
+        </tr>
+      </thead>
+      <tbody id="userBody">
+        <tr><td colspan="3">読み込み中...</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <!-- 戻るボタン -->
+  <button onclick="history.back()" class="return-btn">← 戻る</button>
+
+  <script src="admin.js"></script>
 </body>
 </html>

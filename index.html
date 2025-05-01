@@ -2,17 +2,57 @@
 <html lang="ja">
 <head>
   <meta charset="UTF-8" />
-  <title>旅行アルバム ログイン</title>
-  <script defer src="script.js"></script>
+  <title>軽音アルバム ログイン</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Helvetica', sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      background-color: #f0f0f0;
+      text-align: center;
+    }
+
+    h1 {
+      font-size: 36px;
+      margin-bottom: 30px;
+    }
+
+    .login-button {
+      display: block;
+      font-size: 20px;
+      padding: 15px 30px;
+      margin: 10px;
+      cursor: pointer;
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      transition: background-color 0.3s;
+    }
+
+    .login-button:hover {
+      background-color: #45a049;
+    }
+  </style>
 </head>
 <body>
-  <h1>ようこそ、旅行アルバムへ</h1>
-  <p>アクセスにはパスワードが必要です</p>
+  <h1>軽音アルバム ログインページ</h1>
 
-  <form id="loginForm">
-    <input type="password" id="passwordInput" placeholder="パスワードを入力" required />
-    <button type="submit">ログイン</button>
-    <p id="errorMessage" style="color:red;"></p>
-  </form>
+  <button class="login-button" onclick="location.href='pre_register.html'">
+    未認証の方はこちら
+  </button>
+
+  <button class="login-button" onclick="location.href='full_login.html'">
+    認証済みの方はこちら
+  </button>
+
+  <button class="login-button" onclick="location.href='admin_login.html'">
+    管理者の方はこちら
+  </button>
 </body>
 </html>
