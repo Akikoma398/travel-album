@@ -2,14 +2,13 @@
 <html lang="ja">
 <head>
   <meta charset="UTF-8" />
-  <title>認証待ち</title>
-  <meta http-equiv="refresh" content="20;url=index.html">
+  <title>送信完了</title>
   <style>
     body {
       font-family: 'Helvetica', sans-serif;
+      background-color: #f0f0f0;
       text-align: center;
       padding: 100px 20px;
-      background-color: #f0f0f0;
     }
 
     h1 {
@@ -20,11 +19,32 @@
     p {
       font-size: 18px;
     }
+
+    #count {
+      font-weight: bold;
+      font-size: 20px;
+      color: #ff5722;
+    }
   </style>
 </head>
 <body>
   <h1>仮登録が完了しました！</h1>
   <p>管理者が承認するまでお待ちください。</p>
-  <p>20秒後に自動的にトップページへ戻ります。</p>
+  <p><span id="count">10</span>秒後に自動的にトップページへ戻ります。</p>
+
+  <script>
+    let seconds = 10;
+    const countDisplay = document.getElementById("count");
+
+    const timer = setInterval(() => {
+      seconds--;
+      countDisplay.textContent = seconds;
+
+      if (seconds <= 0) {
+        clearInterval(timer);
+        window.location.href = "index.html";
+      }
+    }, 1000);
+  </script>
 </body>
 </html>
