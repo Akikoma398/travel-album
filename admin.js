@@ -49,11 +49,12 @@ async function toggleApproval(email, button) {
       button.textContent = "承認";
     }
 
-    loadUsers(); // 表を再読み込み
+    loadUsers(); // 表の再読み込み
   } catch (err) {
     console.error("承認切替エラー:", err);
     alert("承認処理に失敗しました");
   }
 }
 
+// 初期読み込み
 loadUsers();
