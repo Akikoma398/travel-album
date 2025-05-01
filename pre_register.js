@@ -19,8 +19,24 @@ document.getElementById("registerForm").addEventListener("submit", async functio
     formData.append("question", question);
   
     try {
-      await fetch(scriptURL, { method: "POST", body: formData });
-      window.location.href = "waiting.html";
+      try {
+        console.log("送信開始");
+      
+        const res = await fetch(scriptURL, { method: "POST", body: formData });
+      
+        const text = await res.text();
+        console.log("GASからの応答:", text);
+      
+        if (text === "OK") {
+          window.location.href = "waiting.html";
+        } else {
+          document.getElementById("message").textContent = "GASが異常な応答を返しました：" + text;
+        }
+      
+      } catch (error) {
+        console.error("送信エラー:", error);
+        document.getElementById("message").textContent = "送信に失敗しました。もう一度お試しください。";
+      }
     } catch (error) {
       message.textContent = "送信に失敗しました。もう一度お試しください。";
       console.error("Error!", error.message);
