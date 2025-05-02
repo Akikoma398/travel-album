@@ -80,7 +80,7 @@ async function loadUsers() {
 // ④ 承認状態を切り替える
 async function toggleApproval(email, button) {
   try {
-    const res = await fetch(`${scriptURL}?email=${encodeURIComponent(email)}`);
+    const res = await fetch(`${scriptURL}?action=toggle&email=${encodeURIComponent(email)}`);
     const result = await res.text();
 
     if (result === "APPROVED") {
