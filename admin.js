@@ -84,9 +84,8 @@ async function toggleApproval(email, button) {
     const result = await res.text();
 
     if (result === "APPROVED") {
-      button.textContent = "承認を取り消す";
-    } else if (result === "UNAPPROVED") {
-      button.textContent = "承認";
+      button.textContent = "承認済み";
+      button.disabled = true;
     }
 
     loadUsers(); // 表の再読み込み
