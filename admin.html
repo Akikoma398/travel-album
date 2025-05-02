@@ -43,6 +43,13 @@
     button.approve-btn:hover {
       background-color: #388E3C;
     }
+
+    ul.password-form .label-text {
+      display: inline-block;
+      width: 180px;
+      text-align: right;
+      margin-right: 8px;
+    }
   </style>
 </head>
 <body>
@@ -57,19 +64,19 @@
   
   <section>
     <h2>パスワードの変更</h2>
-    <ul>
+    <ul class="password-form">
       <li>
-        <label>管理者パスワード１：
+        <label><span class="label-text">管理者パスワード１：</span>
           <input type="text" id="input-admin1" placeholder="新 管理者パスワード１" />
         </label>
       </li>
       <li>
-        <label>管理者パスワード２：
+        <label><span class="label-text">管理者パスワード２：</span>
           <input type="text" id="input-admin2" placeholder="新 管理者パスワード２" />
         </label>
       </li>
       <li>
-        <label>一般ログインパスワード：
+        <label><span class="label-text">一般ログインパスワード：</span>
           <input type="text" id="input-general" placeholder="新 一般ログインパスワード" />
         </label>
       </li>
