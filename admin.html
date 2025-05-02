@@ -57,12 +57,26 @@
   
   <section>
     <h2>パスワードの変更</h2>
-    <input type="text" id="input-admin1" placeholder="新 管理者パスワード１" />
-    <input type="text" id="input-admin2" placeholder="新 管理者パスワード２" />
-    <input type="text" id="input-general" placeholder="新 一般ログインパスワード" />
+    <ul>
+      <li>
+        <label>管理者パスワード１：
+          <input type="text" id="input-admin1" placeholder="新 管理者パスワード１" />
+        </label>
+      </li>
+      <li>
+        <label>管理者パスワード２：
+          <input type="text" id="input-admin2" placeholder="新 管理者パスワード２" />
+        </label>
+      </li>
+      <li>
+        <label>一般ログインパスワード：
+          <input type="text" id="input-general" placeholder="新 一般ログインパスワード" />
+        </label>
+      </li>
+    </ul>
     <button onclick="updatePasswords()">更新</button>
   </section>
-  <h1>管理者ページ：登録ユーザー一覧</h1>
+  <h1>登録ユーザー一覧</h1>
 
   <table>
     <thead>
