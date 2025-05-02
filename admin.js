@@ -1,6 +1,6 @@
 const scriptURL = "https://script.google.com/macros/s/AKfycbwgMAc1vE4YjGWFnRp4kU2DftuJXEgRKuM4EyrlT2iPg4jGNEOD2kAVAGhLVZSI3w2z/exec";
 
-// ① 現在のパスワードを取得して表示
+// 現在のパスワードを取得して表示
 async function loadPasswords() {
   try {
     const res = await fetch(scriptURL + "?action=passwords");
@@ -13,7 +13,7 @@ async function loadPasswords() {
   }
 }
 
-// ② 新しいパスワードを送信して更新
+// パスワード更新
 async function updatePasswords() {
   const admin1 = document.getElementById("input-admin1").value;
   const admin2 = document.getElementById("input-admin2").value;
@@ -38,7 +38,7 @@ async function updatePasswords() {
   }
 }
 
-// ③ ユーザー一覧を読み込む
+// ユーザー一覧を読み込む
 async function loadUsers() {
   const tbody = document.getElementById("userBody");
   tbody.innerHTML = "";
@@ -46,6 +46,7 @@ async function loadUsers() {
   try {
     const res = await fetch(scriptURL);
     const users = await res.json();
+    console.log("受信したユーザー情報:", users);
 
     if (users.length === 0) {
       tbody.innerHTML = "<tr><td colspan='7'>ユーザーが見つかりません</td></tr>";
@@ -64,7 +65,7 @@ async function loadUsers() {
         <td>${formatTimestamp(user.approvedTime)}</td>
         <td>
           <button class="approve-btn" onclick="toggleApproval('${user.email}', this)">
-            ${user.status === "承認済み" ? "承認を取り消す" : "承認"}
+            ${user.status === "承認済み" ? "承認済み" : "承認"}
           </button>
         </td>
       `;
@@ -77,7 +78,7 @@ async function loadUsers() {
   }
 }
 
-// ④ 承認状態を切り替える
+// 承認切替処理
 async function toggleApproval(email, button) {
   try {
     const res = await fetch(`${scriptURL}?action=toggle&email=${encodeURIComponent(email)}`);
@@ -88,13 +89,27 @@ async function toggleApproval(email, button) {
       button.disabled = true;
     }
 
-    loadUsers(); // 表の再読み込み
+    loadUsers(); // 表更新
   } catch (err) {
     console.error("承認切替エラー:", err);
     alert("承認処理に失敗しました");
   }
 }
 
-// 初期読み込み
+// 日付整形関数（←今回のポイント）
+function formatTimestamp(isoString) {
+  if (!isoString || isoString === "undefined") return "";
+  const date = new Date(isoString);
+  if (isNaN(date.getTime())) return ""; // 無効な日付なら空
+  const y = date.getFullYear();
+  const m = ("0" + (date.getMonth() + 1)).slice(-2);
+  const d = ("0" + date.getDate()).slice(-2);
+  const h = ("0" + date.getHours()).slice(-2);
+  const min = ("0" + date.getMinutes()).slice(-2);
+  const s = ("0" + date.getSeconds()).slice(-2);
+  return `${y}/${m}/${d}/${h}:${min}:${s}`;
+}
+
+// 初期表示
 loadUsers();
 loadPasswords();
