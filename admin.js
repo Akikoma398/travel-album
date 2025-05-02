@@ -1,5 +1,44 @@
-const scriptURL = "https://script.google.com/macros/s/AKfycbxN3nz8_tt9Ap0tguv01l3yf6mCXj2muLTlwwC1fbegt2VwWKDDwDW8YCBuxT1ryiS8/exec";
+const scriptURL = "https://script.google.com/macros/s/AKfycbzJTmXjCwcyJRI4SXygTpCN18Y5fPAeqSMqg5az2HGwR2CvMxlkiTyw316wPgzDcEbx/exec";
 
+// ① 現在のパスワードを取得して表示
+async function loadPasswords() {
+  try {
+    const res = await fetch(scriptURL + "?action=passwords");
+    const data = await res.json();
+    document.getElementById("pw-admin1").textContent = data.admin1;
+    document.getElementById("pw-admin2").textContent = data.admin2;
+    document.getElementById("pw-general").textContent = data.general;
+  } catch (err) {
+    console.error("パスワード取得エラー:", err);
+  }
+}
+
+// ② 新しいパスワードを送信して更新
+async function updatePasswords() {
+  const admin1 = document.getElementById("input-admin1").value;
+  const admin2 = document.getElementById("input-admin2").value;
+  const general = document.getElementById("input-general").value;
+
+  const form = new URLSearchParams();
+  if (admin1) form.append("admin1", admin1);
+  if (admin2) form.append("admin2", admin2);
+  if (general) form.append("general", general);
+
+  try {
+    await fetch(scriptURL, {
+      method: "POST",
+      body: form
+    });
+
+    alert("パスワードを更新しました！");
+    loadPasswords();
+  } catch (err) {
+    console.error("パスワード更新エラー:", err);
+    alert("パスワード更新に失敗しました");
+  }
+}
+
+// ③ ユーザー一覧を読み込む
 async function loadUsers() {
   const tbody = document.getElementById("userBody");
   tbody.innerHTML = "";
@@ -38,6 +77,7 @@ async function loadUsers() {
   }
 }
 
+// ④ 承認状態を切り替える
 async function toggleApproval(email, button) {
   try {
     const res = await fetch(`${scriptURL}?email=${encodeURIComponent(email)}`);
@@ -58,3 +98,4 @@ async function toggleApproval(email, button) {
 
 // 初期読み込み
 loadUsers();
+loadPasswords();

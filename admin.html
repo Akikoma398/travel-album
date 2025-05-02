@@ -46,6 +46,22 @@
   </style>
 </head>
 <body>
+  <section>
+    <h2>現在のパスワード</h2>
+    <ul>
+      <li>管理者パスワード１：<span id="pw-admin1">読み込み中...</span></li>
+      <li>管理者パスワード２：<span id="pw-admin2">読み込み中...</span></li>
+      <li>一般ログインパスワード：<span id="pw-general">読み込み中...</span></li>
+    </ul>
+  </section>
+  
+  <section>
+    <h2>パスワードの変更</h2>
+    <input type="text" id="input-admin1" placeholder="新 管理者パスワード１" />
+    <input type="text" id="input-admin2" placeholder="新 管理者パスワード２" />
+    <input type="text" id="input-general" placeholder="新 一般ログインパスワード" />
+    <button onclick="updatePasswords()">更新</button>
+  </section>
   <h1>管理者ページ：登録ユーザー一覧</h1>
 
   <table>
