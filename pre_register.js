@@ -11,7 +11,7 @@ document.getElementById("registerForm").addEventListener("submit", async functio
     return;
   }
 
-  const scriptURL = "https://script.google.com/macros/s/AKfycbzJTmXjCwcyJRI4SXygTpCN18Y5fPAeqSMqg5az2HGwR2CvMxlkiTyw316wPgzDcEbx/exec";
+  const scriptURL = "https://script.google.com/macros/s/AKfycbwgMAc1vE4YjGWFnRp4kU2DftuJXEgRKuM4EyrlT2iPg4jGNEOD2kAVAGhLVZSI3w2z/exec";
 
   const formData = new FormData();
   formData.append("name", name);
