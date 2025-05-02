@@ -59,7 +59,7 @@ async function loadUsers() {
         <td>${user.name}</td>
         <td>${user.email}</td>
         <td>${user.question}</td>
-        <td>${user.requestTime}</td>
+        <td>${formatTimestamp(user.requestTime)}</td>
         <td>${user.status}</td>
         <td>${formatTimestamp(user.approvedTime)}</td>
         <td>
@@ -88,8 +88,7 @@ async function toggleApproval(email, button) {
       button.disabled = true;
     }
 
-    // Re-fetch and display user list with reformatted timestamp
-    await loadUsers();
+    loadUsers(); // 表の再読み込み
   } catch (err) {
     console.error("承認切替エラー:", err);
     alert("承認処理に失敗しました");
@@ -99,15 +98,3 @@ async function toggleApproval(email, button) {
 // 初期読み込み
 loadUsers();
 loadPasswords();
-
-function formatTimestamp(isoString) {
-  if (!isoString) return "";
-  const date = new Date(isoString);
-  const y = date.getFullYear();
-  const m = ("0" + (date.getMonth() + 1)).slice(-2);
-  const d = ("0" + date.getDate()).slice(-2);
-  const h = ("0" + date.getHours()).slice(-2);
-  const min = ("0" + date.getMinutes()).slice(-2);
-  const s = ("0" + date.getSeconds()).slice(-2);
-  return `${y}/${m}/${d}/${h}:${min}:${s}`;
-}
