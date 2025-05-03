@@ -27,18 +27,7 @@ document.getElementById("registerForm").addEventListener("submit", async functio
     const text = await response.text();
 
     if (text === "OK") {
-      let seconds = 10;
-      message.style.color = "green";
-      message.textContent = `送信が完了しました。${seconds}秒後にトップページに戻ります…`;
-
-      const interval = setInterval(() => {
-        seconds--;
-        message.textContent = `送信が完了しました。${seconds}秒後にトップページに戻ります…`;
-        if (seconds <= 0) {
-          clearInterval(interval);
-          window.location.href = "index.html";
-        }
-      }, 1000);
+      window.location.href = "waiting.html";
     } else {
       message.textContent = "送信に失敗しました。もう一度お試しください。";
     }
