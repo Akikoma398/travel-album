@@ -10,9 +10,6 @@ document.getElementById("adminLoginForm").addEventListener("submit", async funct
       method: "GET",
       mode: "cors"
     });
-    if (!response.ok) {
-      throw new Error("Network response was not ok");
-    }
     const passwords = await response.json();
     const adminPass1 = passwords.admin1;
     const adminPass2 = passwords.admin2;
