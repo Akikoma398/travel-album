@@ -5,9 +5,9 @@ async function loadPasswords() {
   try {
     const res = await fetch(scriptURL + "?action=passwords");
     const data = await res.json();
-    document.getElementById("pw-admin1").textContent = data.admin1;
-    document.getElementById("pw-admin2").textContent = data.admin2;
-    document.getElementById("pw-general").textContent = data.general;
+    document.getElementById("pw-admin1").textContent = data.admin1 || "(未設定)";
+    document.getElementById("pw-admin2").textContent = data.admin2 || "(未設定)";
+    document.getElementById("pw-general").textContent = data.general || "(未設定)";
   } catch (err) {
     console.error("パスワード取得エラー:", err);
   }
