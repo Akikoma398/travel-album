@@ -59,11 +59,11 @@ input, button {
 /* 画面幅が600px以下の場合のレスポンシブ対応 */
 @media (max-width: 600px) {
   h1 {
-    font-size: 24px;
+    font-size: 28px;
   }
 
   input, button {
-    font-size: 20px;
-    padding: 18px;
+    font-size: 22px;
+    padding: 20px;
   }
 }
