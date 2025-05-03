@@ -1,39 +1,29 @@
-<!DOCTYPE html>
-<html lang="ja">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>管理者ページ</title>
-  <style>
-    /* existing styles */
+async function updatePasswords() {
+  const admin1 = document.getElementById("input-admin1").value;
+  const admin2 = document.getElementById("input-admin2").value;
+  const general = document.getElementById("input-general").value;
 
-    .admin-header {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      background-color: #333;
-      color: #fff;
-      padding: 16px 0;
-      text-align: center;
-      font-size: 24px;
-      font-weight: bold;
-      z-index: 1000;
+  const form = new URLSearchParams();
+  form.append("action", "update-passwords");
+  if (admin1) form.append("admin1", admin1);
+  if (admin2) form.append("admin2", admin2);
+  if (general) form.append("general", general);
+
+  try {
+    const res = await fetch(scriptURL, {
+      method: "POST",
+      body: form
+    });
+
+    const result = await res.text();
+    if (result === "OK") {
+      alert("パスワードを更新しました！");
+      loadPasswords();
+    } else {
+      alert("更新に失敗しました: " + result);
     }
-
-    body {
-      font-family: 'Helvetica', sans-serif;
-      background-color: #f7f7f7;
-      padding: 120px 40px 40px; /* updated for more top space */
-    }
-  </style>
-</head>
-<body>
-  <header class="admin-header">
-    <h1>管理者ページ</h1>
-  </header>
-
-  <h2>現在のパスワード</h2>
-  <!-- rest of the content -->
-</body>
-</html>
+  } catch (err) {
+    console.error("パスワード更新エラー:", err);
+    alert("パスワード更新に失敗しました");
+  }
+}
