@@ -5,7 +5,7 @@ document.getElementById("adminLoginForm").addEventListener("submit", async funct
   const error = document.getElementById("error");
 
   try {
-    const response = await fetch("https://script.google.com/macros/s/AKfycbz2F1gQCtgrKqZQc15qhZKRMxzsNXljD51Wb0piPF9NSEz8Yz8QILf-5KUdxqi3zWYc/exec?action=passwords");
+    const response = await fetch("https://script.google.com/macros/s/AKfycbzGRJOCTRuH9ZEouSJXBGdwdr_o33cO3iwivBqouBJM_ZNd0AN1GGET4QwtQSFTDozt/exec?action=passwords");
     const passwords = await response.json();
     const adminPass1 = passwords.admin1;
 
