@@ -54,7 +54,7 @@ input, button {
   justify-content: center;
   align-items: center;
   gap: 20px;
-  width: 90%;
+  width: 95%;
   max-width: 350px;
   box-sizing: border-box;
 }
