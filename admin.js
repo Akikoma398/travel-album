@@ -1,4 +1,4 @@
-const scriptURL = "https://script.google.com/macros/s/AKfycbx-yJuh6KXYnXjX8odfEs0ZEGbsX4mV5BMLWkXVEobdUvNg-1myNfEi3Ku0DwKS8rme/exec";
+const scriptURL = "https://script.google.com/macros/s/AKfycbwCUCvHhtk3qiC9yMIL6vVNEkZ7maKRgWmqkpM7kf2njKUOx99pFX5b_HWG44n4SkU/exec";
 
 // 現在のパスワードを取得して表示
 async function loadPasswords() {
