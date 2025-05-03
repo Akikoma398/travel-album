@@ -39,7 +39,7 @@ body {
   /* ===== ログインフォーム全体の枠（中央配置＆装飾） ===== */
   .login-container {
     border: 2px solid #ccc;              /* グレーの枠線 */
-    padding: 40px;                       /* 内側に余白（上下左右） */
+    padding: 20px;                       /* 内側に余白（上下左右） */
     border-radius: 20px;                 /* 枠を少し丸めて柔らかい印象に */
     background-color: #f9f9f9;           /* 背景はほんのりグレーで白とのコントラスト */
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.1); /* うっすら影をつけて立体感を出す */
@@ -55,7 +55,7 @@ body {
     justify-content: center;            /* 子要素を縦方向の中央に配置 */
     align-items: center;                /* 子要素を左右中央に配置 */
     gap: 35px;                           /* 要素間のスペースを20pxに統一 */
-    width: 100%;                          /* 親（body）の90%の幅を基準に表示 */
+    width: 90%;                          /* 親（body）の90%の幅を基準に表示 */
     max-width: 400px;                   /* ただし最大幅は400pxで制限（PC用） */
   }
   
