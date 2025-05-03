@@ -9,7 +9,7 @@ async function login() {
   }
 
   try {
-    const response = await fetch("https://script.google.com/macros/s/AKfycbwBU02OGfZQR7ycRGIgnyLGpqNPOXEABFq34lkX8S1pj91zEza7acc2d3gjQSESqBW2/exec");
+    const response = await fetch("https://script.google.com/macros/s/AKfycbzhRYqoiuopY5RZKu_RPpGMsuuggwCN--GdDfwX3dps3_k59U1-hnf9xJkrXmjTz1JR/exec");
     const data = await response.json();
 
     const correctPassword = data.password; // スプレッドシートのB1の値
