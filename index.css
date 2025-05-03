@@ -1,3 +1,4 @@
+/* 全体の基本スタイルを設定 */
 body {
   font-family: 'Helvetica', sans-serif;
   display: flex;
@@ -5,16 +6,18 @@ body {
   align-items: center;
   justify-content: center;
   min-height: 100vh;
-  height: 50px;
+  height: 100vh;
   padding: 0px;
   margin: 0 0 40px 0;
 }
 
+/* 見出し (h1) のスタイル */
 h1 {
   font-size: 28px;
   margin-bottom: 20px;
 }
 
+/* 入力欄とボタンの共通スタイル */
 input, button {
   margin: 12px;
   padding: 16px;
@@ -22,14 +25,35 @@ input, button {
   width: 100%;
   max-width: 300px;
   box-sizing: border-box;
+  display: block;
+  margin-left: 0;
+  margin-right: 0;
 }
 
+/* エラーメッセージのスタイル */
 #error {
   color: red;
   font-size: 16px;
 }
 
-@media (max-width: 60px) {
+/* ログインフォーム全体の枠 */
+.login-container {
+  border: 2px solid #ccc;
+  padding: 30px;
+  border-radius: 10px;
+  background-color: #f9f9f9;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  margin: 0 auto;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+}
+
+/* 画面幅が600px以下の場合のレスポンシブ対応 */
+@media (max-width: 600px) {
   h1 {
     font-size: 24px;
   }

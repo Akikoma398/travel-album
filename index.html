@@ -8,19 +8,21 @@
 </head>
 
 <body>
-  <h1>ログイン</h1> <!-- タイトル表示 -->
+  <div class="login-container">
+    <h1>ログイン</h1> <!-- タイトル表示 -->
 
-  <!-- 名前入力欄 -->
-  <input type="text" id="name" placeholder="名前" />
+    <!-- 名前入力欄 -->
+    <input type="text" id="name" placeholder="名前" />
 
-  <!-- パスワード入力欄 -->
-  <input type="password" id="password" placeholder="パスワード" />
+    <!-- パスワード入力欄 -->
+    <input type="password" id="password" placeholder="パスワード" />
 
-  <!-- ログインボタン（login関数を呼び出す） -->
-  <button onclick="login()">ログイン</button>
+    <!-- ログインボタン（login関数を呼び出す） -->
+    <button onclick="login()">ログイン</button>
 
-  <!-- エラーメッセージ表示欄 -->
-  <p id="error"></p>
+    <!-- エラーメッセージ表示欄 -->
+    <p id="error"></p>
+  </div>
 
   <!-- ログイン処理を記述したJavaScriptファイルの読み込み -->
   <script src="index.js"></script>
