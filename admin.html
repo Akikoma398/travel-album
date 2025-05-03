@@ -55,9 +55,30 @@
         display: none;
       }
     }
+
+    .admin-header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      background-color: #333;
+      color: #fff;
+      padding: 16px 0;
+      text-align: center;
+      font-size: 24px;
+      font-weight: bold;
+      z-index: 1000;
+    }
+
+    body {
+      padding-top: 80px; /* create space for the fixed header */
+    }
   </style>
 </head>
 <body>
+  <header class="admin-header">
+    <h1>管理者ページ</h1>
+  </header>
   <section>
     <h2>現在のパスワード</h2>
     <ul>
