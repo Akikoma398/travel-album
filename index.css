@@ -54,6 +54,8 @@ input, button {
   justify-content: center;
   align-items: center;
   gap: 20px;
+  width: 90%;
+  max-width: 400px;
 }
 
 /* 画面幅が600px以下の場合のレスポンシブ対応 */
