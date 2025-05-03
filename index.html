@@ -4,54 +4,7 @@
 <head>
   <meta charset="UTF-8" /> <!-- 文字コードをUTF-8に設定 -->
   <title>簡易ログイン</title> <!-- ブラウザタブのタイトル -->
-
-  <style>
-    /* 全体のフォントと中央寄せのスタイル設定 */
-    body {
-      font-family: 'Helvetica', sans-serif;
-      display: flex; /* フレックスボックスで配置 */
-      flex-direction: column;
-      align-items: center; /* 中央寄せ */
-      justify-content: center;
-      min-height: 100vh; /* 画面の高さ全体を確保 */
-      height: 50px; /* 高さを500pxに固定 */
-      padding: 0px;
-      margin: 0 0 40px 0; /* 下に余白を追加 */
-    }
-
-    /* タイトルのスタイル */
-    h1 {
-      font-size: 28px;
-      margin-bottom: 20px;
-    }
-
-    /* 入力欄とボタンの共通スタイル */
-    input, button {
-      margin: 12px;
-      padding: 16px;
-      font-size: 18px;
-      width: 100%; /* 横幅いっぱいに広げる */
-      max-width: 300px; /* ただし最大幅は300pxまで */
-      box-sizing: border-box; /* パディングとボーダーを幅に含める */
-    }
-
-    /* エラーメッセージのスタイル */
-    #error {
-      color: red;
-      font-size: 16px;
-    }
-
-    /* スマホなど幅が狭い画面向けの調整 */
-    @media (max-width: 60px) {
-      h1 {
-        font-size: 24px;
-      }
-      input, button {
-        font-size: 20px; /* 少し大きめに */
-        padding: 18px;
-      }
-    }
-  </style>
+  <link rel="stylesheet" href="index.css" />
 </head>
 
 <body>
