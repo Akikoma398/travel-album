@@ -22,7 +22,9 @@
     }
 
     body {
-      padding-top: 80px; /* create space for the fixed header */
+      font-family: 'Helvetica', sans-serif;
+      background-color: #f7f7f7;
+      padding: 120px 40px 40px; /* updated for more top space */
     }
   </style>
 </head>
