@@ -1,54 +1,76 @@
-<!DOCTYPE html>
-<html lang="ja">
+<!DOCTYPE html> <!-- HTML5文書であることを宣言 -->
+<html lang="ja"> <!-- 日本語ページ -->
+
 <head>
-  <meta charset="UTF-8" />
-  <title>簡易ログイン</title>
+  <meta charset="UTF-8" /> <!-- 文字コードをUTF-8に設定 -->
+  <title>簡易ログイン</title> <!-- ブラウザタブのタイトル -->
+
   <style>
+    /* 全体のフォントと中央寄せのスタイル設定 */
     body {
       font-family: 'Helvetica', sans-serif;
-      display: flex;
+      display: flex; /* フレックスボックスで配置 */
       flex-direction: column;
-      align-items: center;
+      align-items: center; /* 中央寄せ */
       justify-content: center;
-      min-height: 100vh;
+      min-height: 100vh; /* 画面の高さ全体を確保 */
       height: auto;
       padding: 0px;
-      margin: 0 0 40px 0;
+      margin: 0 0 40px 0; /* 下に余白を追加 */
     }
+
+    /* タイトルのスタイル */
     h1 {
       font-size: 28px;
       margin-bottom: 20px;
     }
+
+    /* 入力欄とボタンの共通スタイル */
     input, button {
       margin: 12px;
       padding: 16px;
       font-size: 18px;
-      width: 100%;
-      max-width: 300px;
-      box-sizing: border-box;
+      width: 100%; /* 横幅いっぱいに広げる */
+      max-width: 300px; /* ただし最大幅は300pxまで */
+      box-sizing: border-box; /* パディングとボーダーを幅に含める */
     }
+
+    /* エラーメッセージのスタイル */
     #error {
       color: red;
       font-size: 16px;
     }
+
+    /* スマホなど幅が狭い画面向けの調整 */
     @media (max-width: 600px) {
       h1 {
         font-size: 24px;
       }
       input, button {
-        font-size: 20px;
+        font-size: 20px; /* 少し大きめに */
         padding: 18px;
       }
     }
   </style>
 </head>
+
 <body>
-  <h1>ログイン</h1>
+  <h1>ログイン</h1> <!-- タイトル表示 -->
+
+  <!-- 名前入力欄 -->
   <input type="text" id="name" placeholder="名前" />
+
+  <!-- パスワード入力欄 -->
   <input type="password" id="password" placeholder="パスワード" />
+
+  <!-- ログインボタン（login関数を呼び出す） -->
   <button onclick="login()">ログイン</button>
+
+  <!-- エラーメッセージ表示欄 -->
   <p id="error"></p>
 
+  <!-- ログイン処理を記述したJavaScriptファイルの読み込み -->
   <script src="index.js"></script>
 </body>
+
 </html>
