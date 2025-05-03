@@ -1,26 +1,25 @@
-document.getElementById("adminLoginForm").addEventListener("submit", async function (e) {
+document.getElementById('adminLoginForm').addEventListener('submit', async (e) => {
   e.preventDefault();
-
-  const pw1 = document.getElementById("pw1").value;
-  const pw2 = document.getElementById("pw2").value;
-  const error = document.getElementById("error");
+  const pw1 = document.getElementById('pw1');
+  const pw2 = document.getElementById('pw2');
+  const error = document.getElementById('error');
 
   try {
     const response = await fetch("https://script.google.com/macros/s/AKfycbwCUCvHhtk3qiC9yMIL6vVNEkZ7maKRgWmqkpM7kf2njKUOx99pFX5b_HWG44n4SkU/exec?action=passwords", {
       method: "GET",
       mode: "cors"
     });
-    const passwords = await response.json();
-    const adminPass1 = passwords.admin1;
-    const adminPass2 = passwords.admin2;
+    const data = await response.json();
+    const adminPass1 = data.admin1;
+    const adminPass2 = data.admin2;
 
-    if (pw1 === adminPass1 && pw2 === adminPass2) {
-      window.location.href = "admin.html";
-    } else {
-      error.textContent = "パスワードが正しくありません。";
-    }
+    // Set the input values for testing
+    pw1.value = adminPass1;
+    pw2.value = adminPass2;
+
+    // Skip login for this test
+    error.textContent = "読み込みテスト：パスワードが自動表示されました。";
   } catch (err) {
-    console.error(err);
-    error.textContent = "認証中にエラーが発生しました。";
+    error.textContent = "エラーが発生しました。もう一度お試しください。";
   }
 });
