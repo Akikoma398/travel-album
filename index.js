@@ -1,28 +1,24 @@
-const scriptURL = "https://script.google.com/macros/s/AKfycbzAfTMKAehPcBkvIGXnVUFT9fL68IRuJmrpUhk3AjjfHOU8U4Kid8KkRffJbG1Jq2Y5/exec";
-
-async function login() {
-  const name = document.getElementById("name").value;
-  const password = document.getElementById("password").value;
-  const error = document.getElementById("error");
-
-  const formData = new URLSearchParams();
-  formData.append("name", name);
-  formData.append("password", password);
-
-  try {
-    const res = await fetch(scriptURL, {
-      method: "POST",
-      body: formData
-    });
-
-    const result = await res.text();
-    if (result === "OK") {
-      window.location.href = "home.html";
-    } else {
-      error.textContent = "名前またはパスワードが正しくありません。";
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Login</title>
+  <style>
+    body {
+      font-family: 'Helvetica', sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      height: auto;
+      padding: 0px;
+      margin: 0 0 40px 0;
     }
-  } catch (err) {
-    console.error("通信エラー:", err);
-    error.textContent = "ログイン中にエラーが発生しました。";
-  }
-}
+  </style>
+</head>
+<body>
+  <!-- body content -->
+</body>
+</html>
