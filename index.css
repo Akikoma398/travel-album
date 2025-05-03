@@ -30,6 +30,17 @@ input, button {
   margin-right: 0;
 }
 
+button {
+  background-color: #007BFF; /* 青系 */
+  color: rgb(255, 255, 255);
+  border: none;
+  border-radius: 6px;
+}
+
+button:hover {
+  background-color: #0062cb; /* 濃い青でホバー時の変化 */
+}
+
 /* エラーメッセージのスタイル */
 #error {
   color: red;
@@ -38,11 +49,11 @@ input, button {
 
 /* ログインフォーム全体の枠 */
 .login-container {
-  border: 2px solid #ccc;
+  border: 2px solid #949494;
   padding: 20px;
   border-radius: 10px;
   background-color: #f9f9f9;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
   /* margin: 0 auto; */
   position: absolute;
   top: 50%;
