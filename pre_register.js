@@ -1,29 +1,49 @@
-async function updatePasswords() {
-  const admin1 = document.getElementById("input-admin1").value;
-  const admin2 = document.getElementById("input-admin2").value;
-  const general = document.getElementById("input-general").value;
+const scriptURL = "https://script.google.com/macros/s/AKfycbwCUCvHhtk3qiC9yMIL6vVNEkZ7maKRgWmqkpM7kf2njKUOx99pFX5b_HWG44n4SkU/exec";
 
-  const form = new URLSearchParams();
-  form.append("action", "update-passwords");
-  if (admin1) form.append("admin1", admin1);
-  if (admin2) form.append("admin2", admin2);
-  if (general) form.append("general", general);
+document.getElementById("registerForm").addEventListener("submit", async function (e) {
+  e.preventDefault();
+
+  const name = document.getElementById("name").value.trim();
+  const email = document.getElementById("email").value.trim();
+  const question = document.getElementById("question").value.trim();
+  const message = document.getElementById("message");
+
+  if (!name || !email || !question) {
+    message.textContent = "全ての項目を入力してください。";
+    return;
+  }
+
+  const formData = new FormData();
+  formData.append("name", name);
+  formData.append("email", email);
+  formData.append("question", question);
 
   try {
-    const res = await fetch(scriptURL, {
+    const response = await fetch(scriptURL, {
       method: "POST",
-      body: form
+      body: formData
     });
 
-    const result = await res.text();
-    if (result === "OK") {
-      alert("パスワードを更新しました！");
-      loadPasswords();
+    const text = await response.text();
+
+    if (text === "OK") {
+      message.style.color = "green";
+      message.textContent = "送信が完了しました。トップページに戻ります…";
+      setTimeout(() => {
+        window.location.href = "index.html";
+      }, 10000);
+
+      let seconds = 10;
+      const interval = setInterval(() => {
+        seconds--;
+        message.textContent = `送信が完了しました。${seconds}秒後にトップページに戻ります…`;
+        if (seconds <= 0) clearInterval(interval);
+      }, 1000);
     } else {
-      alert("更新に失敗しました: " + result);
+      message.textContent = "送信に失敗しました。もう一度お試しください。";
     }
   } catch (err) {
-    console.error("パスワード更新エラー:", err);
-    alert("パスワード更新に失敗しました");
+    console.error("送信エラー:", err);
+    message.textContent = "送信に失敗しました。もう一度お試しください。";
   }
-}
+});
