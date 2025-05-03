@@ -4,7 +4,7 @@ document.getElementById('adminLoginForm').addEventListener('submit', async (e) =
   const error = document.getElementById('error');
 
   try {
-    const response = await fetch("https://script.google.com/macros/s/AKfycbwp63FyjM5HCgR6qNXHiKPjlIAyLefaU_WqCpJQbdlaR8ncB9l7vlQQ6JBqaIwLeVtp/exec?action=passwords", {
+    const response = await fetch("https://script.google.com/macros/s/AKfycbxTzQyZJvLq7JvYH9L0x8XyA9kLqv8N2bPc8h2R/exec?action=passwords", {
       method: "GET",
       mode: "cors"
     });
