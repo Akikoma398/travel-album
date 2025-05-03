@@ -1,5 +1,3 @@
-
-
 document.getElementById("adminLoginForm").addEventListener("submit", async function (e) {
   e.preventDefault();
 
@@ -7,7 +5,9 @@ document.getElementById("adminLoginForm").addEventListener("submit", async funct
   const error = document.getElementById("error");
 
   try {
-    const response = await fetch("https://script.google.com/macros/s/AKfycbwCUCvHhtk3qiC9yMIL6vVNEkZ7maKRgWmqkpM7kf2njKUOx99pFX5b_HWG44n4SkU/exec?action=passwords");
+    const spreadsheetId = "自作サイト";
+    const sheetName = "パスワード";
+    const response = await fetch(`https://script.google.com/macros/s/AKfycbz2F1gQCtgrKqZQc15qhZKRMxzsNXljD51Wb0piPF9NSEz8Yz8QILf-5KUdxqi3zWYc/exec?action=passwords&spreadsheetId=${encodeURIComponent(spreadsheetId)}&sheetName=${encodeURIComponent(sheetName)}`);
     const passwords = await response.json();
     const adminPass1 = passwords.admin1;
 
