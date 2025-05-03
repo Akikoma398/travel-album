@@ -1,71 +1,72 @@
-/* 全体の基本スタイルを設定 */
+/* ===== 全体の基本スタイルを設定 ===== */
 body {
-  font-family: 'Helvetica', sans-serif;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  position: relative;
-  min-height: 100vh;
-  height: 100vh;
-  padding: 0px;
-  margin: 0 0 40px 0;
-}
-
-/* 見出し (h1) のスタイル */
-h1 {
-  font-size: 28px;
-  margin-bottom: 20px;
-}
-
-/* 入力欄とボタンの共通スタイル */
-input, button {
-  margin: 12px;
-  padding: 16px;
-  font-size: 18px;
-  width: 100%;
-  max-width: 300px;
-  box-sizing: border-box;
-  display: block;
-  margin-left: 0;
-  margin-right: 0;
-}
-
-/* エラーメッセージのスタイル */
-#error {
-  color: red;
-  font-size: 16px;
-}
-
-/* ログインフォーム全体の枠 */
-.login-container {
-  border: 2px solid #ccc;
-  padding: 30px;
-  border-radius: 10px;
-  background-color: #f9f9f9;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  /* margin: 0 auto; */
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  text-align: center;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  gap: 20px;
-  width: 90%;
-  max-width: 400px;
-}
-
-/* 画面幅が600px以下の場合のレスポンシブ対応 */
-@media (max-width: 600px) {
+    font-family: 'Helvetica', sans-serif;  /* 使用するフォントを設定 */
+    display: flex;                         /* 中身をflexボックスにする（縦並び用） */
+    flex-direction: column;               /* 子要素を縦方向に並べる */
+    align-items: center;                  /* 子要素を左右中央に配置 */
+    position: relative;                   /* 子要素（login-container）に絶対位置を使えるようにする */
+    min-height: 100vh;                    /* 少なくとも画面の高さと同じにする */
+    height: 100vh;                        /* 明示的に画面全体の高さにする */
+    padding: 0px;                         /* 内側の余白なし */
+    margin: 0 0 40px 0;                   /* 下だけ40pxの外側余白（スマホの下部スペース対策など） */
+  }
+  
+  /* ===== 見出し (h1) のスタイル ===== */
   h1 {
-    font-size: 28px;
+    font-size: 50px;                      /* 見出し文字のサイズを大きめに設定 */
+    margin-bottom: 20px;                 /* 下にスペースを空ける（見た目を整える） */
   }
-
+  
+  /* ===== 入力欄とボタンに共通するスタイル ===== */
   input, button {
-    font-size: 22px;
-    padding: 20px;
+    margin: px;                         /* 要素周囲に間隔 */
+    padding: 16px;                        /* 内側の余白（クリックしやすく） */
+    font-size: 18px;                      /* テキストサイズ（見やすく） */
+    width: 100%;                          /* 横幅を親要素（.login-container）いっぱいに広げる */
+    max-width: 400px;                     /* ただし最大幅は300pxまでに制限 */
+    box-sizing: border-box;              /* paddingも含めてサイズを計算する */
+    display: block;                      /* ブロック要素にして1行を占有させる */
+    margin-left: 0;                      /* 左余白をゼロに調整（中央揃えの補助） */
+    margin-right: 0;                     /* 右余白もゼロに */
   }
-}
+  
+  /* ===== エラーメッセージのスタイル ===== */
+  #error {
+    color: red;                          /* 赤文字でエラーを目立たせる */
+    font-size: 16px;                     /* エラー表示の文字サイズ */
+  }
+  
+  /* ===== ログインフォーム全体の枠（中央配置＆装飾） ===== */
+  .login-container {
+    border: 2px solid #ccc;              /* グレーの枠線 */
+    padding: 40px;                       /* 内側に余白（上下左右） */
+    border-radius: 20px;                 /* 枠を少し丸めて柔らかい印象に */
+    background-color: #f9f9f9;           /* 背景はほんのりグレーで白とのコントラスト */
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1); /* うっすら影をつけて立体感を出す */
+  
+    position: absolute;                  /* 画面中央に配置するための基準 */
+    top: 50%;                            /* 縦の中央に */
+    left: 50%;                           /* 横の中央に */
+    transform: translate(-50%, -50%);   /* 中心位置を自身のサイズ分だけずらして中央配置に */
+  
+    text-align: center;                  /* 中のテキストを中央揃えに */
+    display: flex;                       /* フレックスレイアウトで中身を縦並びに */
+    flex-direction: column;             /* 子要素を縦方向に配置 */
+    justify-content: center;            /* 子要素を縦方向の中央に配置 */
+    align-items: center;                /* 子要素を左右中央に配置 */
+    gap: 35px;                           /* 要素間のスペースを20pxに統一 */
+    width: 100%;                          /* 親（body）の90%の幅を基準に表示 */
+    max-width: 400px;                   /* ただし最大幅は400pxで制限（PC用） */
+  }
+  
+  /* ===== スマホ画面対応のスタイル（600px以下） ===== */
+  @media (max-width: 600px) {
+    h1 {
+      font-size: 28px;                  /* 見出しサイズを保ったまま */
+    }
+  
+    input, button {
+      font-size: 22px;                  /* ボタンや入力欄の文字を大きくする（指で操作しやすく） */
+      padding: 20px;                    /* タッチ領域を広げるために余白も広げる */
+    }
+  }
