@@ -56,10 +56,9 @@
   </style>
 </head>
 <body>
-  <h1>管理者ログイン（2段階認証）</h1>
+  <h1>管理者ログイン</h1>
   <form id="adminLoginForm">
     <input type="password" id="pw1" placeholder="パスワード1" required />
-    <input type="password" id="pw2" placeholder="パスワード2" required />
     <button type="submit">ログイン</button>
     <p id="error"></p>
   </form>
@@ -68,7 +67,6 @@
     document.getElementById('adminLoginForm').addEventListener('submit', async (e) => {
       e.preventDefault();
       const pw1 = document.getElementById('pw1');
-      const pw2 = document.getElementById('pw2');
       const error = document.getElementById('error');
 
       try {
@@ -78,11 +76,9 @@
         });
         const data = await response.json();
         const adminPass1 = data.admin1;
-        const adminPass2 = data.admin2;
 
-        // Set the input values for testing
+        // Set the input value for testing
         pw1.value = adminPass1;
-        pw2.value = adminPass2;
 
         // Skip login for this test
         error.textContent = "読み込みテスト：パスワードが自動表示されました。";
