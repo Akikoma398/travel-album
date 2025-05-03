@@ -20,6 +20,8 @@ async function updatePasswords() {
   const general = document.getElementById("input-general").value;
 
   const form = new URLSearchParams();
+  form.append("action", "updatePasswords"); // Add action
+
   if (admin1) form.append("admin1", admin1);
   if (admin2) form.append("admin2", admin2);
   if (general) form.append("general", general);
