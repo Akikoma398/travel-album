@@ -2,57 +2,33 @@
 <html lang="ja">
 <head>
   <meta charset="UTF-8" />
-  <title>軽音アルバム ログイン</title>
+  <title>簡易ログイン</title>
   <style>
     body {
-      margin: 0;
-      padding: 0;
       font-family: 'Helvetica', sans-serif;
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
       height: 100vh;
-      background-color: #f0f0f0;
-      text-align: center;
     }
-
-    h1 {
-      font-size: 36px;
-      margin-bottom: 30px;
-    }
-
-    .login-button {
-      display: block;
-      font-size: 20px;
-      padding: 15px 30px;
+    input, button {
       margin: 10px;
-      cursor: pointer;
-      background-color: #4CAF50;
-      color: white;
-      border: none;
-      border-radius: 8px;
-      transition: background-color 0.3s;
+      padding: 10px;
+      font-size: 16px;
     }
-
-    .login-button:hover {
-      background-color: #45a049;
+    #error {
+      color: red;
     }
   </style>
 </head>
 <body>
-  <h1>軽音アルバム ログインページ</h1>
+  <h1>ログイン</h1>
+  <input type="text" id="name" placeholder="名前" />
+  <input type="password" id="password" placeholder="パスワード" />
+  <button onclick="login()">ログイン</button>
+  <p id="error"></p>
 
-  <button class="login-button" onclick="location.href='pre_register.html'">
-    未認証の方はこちら
-  </button>
-
-  <button class="login-button" onclick="location.href='full_login.html'">
-    認証済みの方はこちら
-  </button>
-
-  <button class="login-button" onclick="location.href='admin_login.html'">
-    管理者の方はこちら
-  </button>
+  <script src="login_simple.js"></script>
 </body>
 </html>

@@ -1,41 +1,111 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-  <meta charset="UTF-8" />
-  <title>旅行アルバム ホーム</title>
+  <meta charset="UTF-8">
+  <title>軽音イベントアルバム</title>
   <style>
     body {
-      font-family: sans-serif;
+      margin: 0;
+      font-family: 'Helvetica', sans-serif;
+      background-color: #f5f5f5;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .title {
+      margin: 40px 0 20px;
+      font-size: 36px;
+      color: #333;
+    }
+
+    .event-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 30px;
+      padding: 20px;
+    }
+
+    .event-card {
+      width: 300px;
+      height: 300px;
+      position: relative;
+      overflow: hidden;
+      border-radius: 12px;
+      cursor: pointer;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+      transition: transform 0.3s ease;
+    }
+
+    .event-card:hover {
+      transform: scale(1.05);
+    }
+
+    .grid-images {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      height: 100%;
+    }
+
+    .grid-images img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      image-rendering: -webkit-optimize-contrast;
+      resolution: 30dpi;
+    }
+
+    .overlay {
+      position: absolute;
+      bottom: 0;
+      background: rgba(0,0,0,0.6);
+      color: #fff;
+      width: 100%;
       text-align: center;
-      margin: 50px;
-    }
-    h1 {
-      margin-bottom: 30px;
-    }
-    ul {
-      list-style: none;
-      padding: 0;
-    }
-    li {
-      margin: 20px 0;
-    }
-    a {
-      text-decoration: none;
-      font-size: 24px;
-      color: #3498db;
-    }
-    a:hover {
-      text-decoration: underline;
+      padding: 12px 0;
+      font-size: 18px;
     }
   </style>
 </head>
 <body>
+  <h1 class="title">軽音イベントアルバム</h1>
+  <div class="event-container">
+    <div class="event-card" onclick="location.href='albums/awajishima.html'">
+      <div class="grid-images">
+        <img src="img/awaji1.jpg" alt="">
+        <img src="img/awaji2.jpg" alt="">
+        <img src="img/awaji3.jpg" alt="">
+        <img src="img/awaji4.jpg" alt="">
+      </div>
+      <div class="overlay">淡路島旅行</div>
+    </div>
+  </div>
+<script>
+    document.addEventListener("DOMContentLoaded", async function () {
+      try {
+        const response = await fetch("albums/あわじ写真フォルダ/images.json");
+        const images = await response.json();
+        const selected = [];
 
-<h1>旅行アルバム ホーム</h1>
+        while (selected.length < 4 && selected.length < images.length) {
+          const rand = images[Math.floor(Math.random() * images.length)];
+          if (!selected.includes(rand)) selected.push(rand);
+        }
 
-<ul>
-  <li><a href="albums/awajishima.html">淡路島旅行</a></li>
-</ul>
+        const grid = document.querySelector(".grid-images");
+        grid.innerHTML = "";
 
+        selected.forEach(filename => {
+          const img = document.createElement("img");
+          img.src = `albums/あわじ写真フォルダ/${filename}`;
+          img.alt = filename;
+          grid.appendChild(img);
+        });
+      } catch (e) {
+        console.error("画像の読み込みに失敗しました", e);
+      }
+    });
+  </script>
 </body>
 </html>
