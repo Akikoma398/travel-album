@@ -1,22 +1,23 @@
-document.getElementById('adminLoginForm').addEventListener('submit', async (e) => {
+
+
+document.getElementById("adminLoginForm").addEventListener("submit", async function (e) {
   e.preventDefault();
-  const pw1 = document.getElementById('pw1').value;
-  const error = document.getElementById('error');
+
+  const pw1 = document.getElementById("pw1").value;
+  const error = document.getElementById("error");
 
   try {
-    const response = await fetch("https://script.google.com/macros/s/AKfycbxTzQyZJvLq7JvYH9L0x8XyA9kLqv8N2bPc8h2R/exec?action=passwords", {
-      method: "GET",
-      mode: "cors"
-    });
-    const data = await response.json();
-    const adminPass1 = data.admin1;
+    const response = await fetch("https://script.google.com/macros/s/AKfycbwCUCvHhtk3qiC9yMIL6vVNEkZ7maKRgWmqkpM7kf2njKUOx99pFX5b_HWG44n4SkU/exec?action=passwords");
+    const passwords = await response.json();
+    const adminPass1 = passwords.admin1;
 
     if (pw1 === adminPass1) {
       window.location.href = "admin.html";
     } else {
-      error.textContent = "パスワードが違います。";
+      error.textContent = "パスワードが正しくありません。";
     }
   } catch (err) {
-    error.textContent = "エラーが発生しました。もう一度お試しください。";
+    console.error(err);
+    error.textContent = "認証中にエラーが発生しました。";
   }
 });
